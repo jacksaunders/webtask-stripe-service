@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
 sub_AyBm7U84aclSG6;
 app.get("/subscriptions/delete", function(req, res) {
   stripe.subscriptions.del(
-    "sub_B74qyT5AUM9U8l",
+    req.webtaskContext.data.subscriptionID,
     { api_key: req.webtaskContext.secrets.STRIPE_SECRET },
     function(err, confirmation) {
       if (err) {
@@ -35,4 +35,4 @@ app.get("/subscriptions/delete", function(req, res) {
   );
 });
 
-module.exports = wt.fromExpress(app).auth0();
+module.exports = wt.fromExpress(app);
