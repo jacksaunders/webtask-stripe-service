@@ -1,6 +1,6 @@
 var app = new (require("express"))();
-var wt = require("webtask-tools");
-var jwt = require("express-jwt");
+var wt = require("webtask-tools")();
+var jwt = require("express-jwt")();
 
 app.use((req, res, next) => {
   jwt({
@@ -18,4 +18,4 @@ app.get("/", function(req, res) {
   res.end("Hello, world!");
 });
 
-module.exports = wt.fromExpress(app).auth0();
+module.exports = wt.fromExpress(app);
